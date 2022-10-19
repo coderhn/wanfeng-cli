@@ -3,6 +3,7 @@
 const program = require("commander");
 const chalk = require("chalk");
 const figlet = require("figlet");
+const create = require("../lib/create");
 
 program
   // 定义命令和参数
@@ -10,10 +11,7 @@ program
   .description("create a new project")
   // -f or --force 为强制创建，如果创建的目录存在则直接覆盖
   .option("-f, --force", "overwrite target directory if it exist")
-  .action((name, options) => {
-    // 打印执行结果
-    console.log("name:", name, "options:", options);
-  });
+  .action(create);
 
 program
   // 配置版本号信息
