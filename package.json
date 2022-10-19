@@ -23,6 +23,7 @@
     "fs-extra": "^10.1.0",
     "inquirer": "^8.2.4",
     "ora": "^5.1.0",
-    "util": "^0.12.5"
+    "util": "^0.12.5",
+    "validate-npm-package-name": "^5.0.0"
   }
 }
