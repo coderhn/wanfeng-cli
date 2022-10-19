@@ -1,0 +1,10 @@
+# 全局安装wanfeng-cli
+
+```shell
+npm install -g wanfeng-cli
+```
+
+## cli工具使用
+```shell
+easy-cli init
+```
