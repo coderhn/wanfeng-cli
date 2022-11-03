@@ -1,7 +1,14 @@
 import inquirer from "inquirer";
-const init = async(model:"spa"|"ssr"|"admin")=>{
-  console.log("model",model);
-  let { type,name } = await inquirer.prompt([
+type OptionType = {
+  react_standard:boolean|string;
+  react_ssr:boolean|string;
+  react_admin:boolean|string;
+}
+const init = async(strategy:string,options:Record<keyof OptionType,string>)=>{
+  console.log("strategy",strategy);
+  console.log("options",options);
+  
+  let { type } = await inquirer.prompt([
     {
       name: "type",
       type: "list",
@@ -27,7 +34,6 @@ const init = async(model:"spa"|"ssr"|"admin")=>{
         //   const validateRes = validate(input);
         //   const isValidName = !Object.values(validateRes).some((d)=>d === false);
         //   if (isValidName && !isExisted) return true;
-
         //   return isExisted
         //   ? `文件夹："${input}"已经存在 ("${input}" 文件夹已经存在)`
         //   : chalk.hex('#FFA500')("包名不符合npm规范 (请重新输入项目名称)");

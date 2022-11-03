@@ -13,7 +13,8 @@ const register = async () => {
     .option('-spa, --react_standard [name]','创建一个标准的react单页应用')
     .option('-ssr, --react_ssr [name]','创建一个react服务端渲染应用')
     .option('-admin, --react_admin [name]','创建一个react管理后台应用')
-    .description("init a new project")
+    .description("快速创建一个web应用脚手架")
+    .usage('[strategy] [options]')
     .action(init);
 
   program.on("--help", () => {
