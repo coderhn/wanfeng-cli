@@ -1,0 +1,33 @@
+{
+  "name": "wanfeng-cli",
+  "version": "1.0.0",
+  "description": "服务于easyV业务的快速创建项目脚手架的cli",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:rm && npm run build:tsc",
+    "build:rm": "rm -rf lib/*",
+    "build:tsc": "tsc --build"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "bin": {
+    "zr": "./bin/index.js"
+  },
+  "author": "wanfeng@dtstack.com",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "4.1.2",
+    "commander": "^9.4.1",
+    "figlet": "^1.5.2",
+    "inquirer": "8.2.4",
+    "validate-npm-package-name": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.5.5",
+    "@types/inquirer": "^9.0.2",
+    "@types/node": "^18.11.2",
+    "typescript": "4.8.4"
+  }
+}
