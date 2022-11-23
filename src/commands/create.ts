@@ -30,16 +30,13 @@ const create = async (options: OptionType) => {
         await generator.download();
         return;
     }
-    if (react_admin) {
-        let name = typeof react_admin === "boolean" ? "demo":react_admin;
-        await dirProcess(
-            name,
-            force
-        );
-        const generator = new Generator('react_admin',name);
-        await generator.download();
-        return;
-    }
+    let name = typeof react_admin === "boolean" ? "demo":react_admin;
+    await dirProcess(
+        name,
+        force
+    );
+    const generator = new Generator('react_admin',name);
+    await generator.download();
 };
 
 export default create;
