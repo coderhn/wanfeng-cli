@@ -9,7 +9,7 @@
     // "outFile": "./app.js",//可以将多个互相依赖的文件生成一个文件，仅支持用在amd模块和system模块
     "lib": ["dom", "es5", "es6", "es7", "es2017", "es2018", "esnext"], //TS需要引入的库，一些声明文件的库
     "jsx": "react",    
-    // "allowJs": true,
+    "allowJs": true,
     // "checkJs": true,
     "outDir": "./lib",
     // "rootDir": "./src",//指定输入文件目录、用于控制输出文件目录结构
@@ -55,12 +55,13 @@
     // "paths": {
     //     "jquery":[demo-demode_modules/jquery/dist/jquery.slim.min.js"],
     // },//路径映射，相对于baseUrl,应用场景，比如我们有的时候不想使用某个包的默认导入版本，在这里就可以指定导入路径
-    // "rootDirs": ["lib"],
+    // "rootDirs": ["src"],
 
     // "listEmittedFiles": false,//打印输出文件
     // "listFiles": false,//打印编译的文件s
   },
   "exclude": [
     "node_modules",
-  ]
+  ],
+  "include": ["src"]
 }

@@ -1,14 +1,22 @@
 import inquirer from "inquirer";
-type OptionType = {
+import chalk from "chalk";
+import validate from "validate-npm-package-name"
+// import { isDir } from "../utils";
+import create from "./create";
+export type OptionType = {
   react_standard:boolean|string;
   react_ssr:boolean|string;
   react_admin:boolean|string;
+  force:boolean|string;
 }
-const init = async(strategy:string,options:Record<keyof OptionType,string>)=>{
-  console.log("strategy",strategy);
+const init = async(strategy:string,options:OptionType)=>{
   console.log("options",options);
-  
-  let { type } = await inquirer.prompt([
+  if(Object.keys(options).length){
+    create(options);
+    return;
+  }
+ 
+  let { type, name } = await inquirer.prompt([
     {
       name: "type",
       type: "list",
@@ -16,12 +24,17 @@ const init = async(strategy:string,options:Record<keyof OptionType,string>)=>{
       choices: [
         {
           name: "spa-react (React单页应用)",
-          value: "spa-react",
+          value: "react_standard",
         },
         {
           name: "ssr-react (React服务端渲染应用)",
-          value: 'ssr-react',
-        }
+          value: 'react_ssr',
+        },
+        {
+          name: "react-admin (React后台管理应用)",
+          value: 'react_admin',
+        },
+
       ],
     },
     {
@@ -45,10 +58,13 @@ const init = async(strategy:string,options:Record<keyof OptionType,string>)=>{
     return;
   }
   switch (type) {
-    case 'spa-react':
+    case 'react_standard':
         console.log('选择了',type);
+        // create(name,{force:''});
         break;
-    
+    case "react_ssr":
+      console.log('选择了',type);
+      break
     default:
         console.log('选择了',type);
         break;
