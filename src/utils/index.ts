@@ -2,8 +2,6 @@ import path from 'path';
 import inquirer from "inquirer";
 import fs from 'fs-extra';
 import ora from "ora";
-import downloadGitRepo from 'download-git-repo';
-import { OptionType } from '../commands/init';
 export async function dirProcess(dirName: string, force?: boolean | string) {
     // 执行创建命令
     // 当前命令行选择的目录
@@ -40,15 +38,3 @@ export async function dirProcess(dirName: string, force?: boolean | string) {
         }
     }
 }
-
-// export async function donwloadTemplate(type: Exclude<keyof OptionType, 'force'>, dirName: string) {
-//     const spinner = ora("正在下载模板...");
-//     spinner.start();
-//     await downloadGitRepo('direct:http://gitlab.prod.dtstack.cn/visdev/easyvadmin-monorepo.git', path.resolve(process.cwd(), dirName),{clone:true},(error:Error)=>{
-//         if(error){
-//             spinner.fail(`模板下载出错:${error.message}`);
-//             return;
-//         }
-//         spinner.succeed('下载完成');
-//     });  
-// }
