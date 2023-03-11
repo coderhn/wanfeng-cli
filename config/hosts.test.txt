@@ -1,0 +1,7 @@
+172.16.203.120 www.easyv.cloud
+172.16.203.120 easyv.cloud
+172.16.203.120 login.easyv.cloud
+172.16.203.120 spaceship.easyv.cloud
+172.16.203.120 uac.easyv.cloud
+172.16.203.120 workspace.easyv.cloud
+172.16.100.138 service.easyv.cloud

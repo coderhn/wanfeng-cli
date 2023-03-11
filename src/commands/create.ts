@@ -8,8 +8,8 @@ import Generator from "../utils/Generator";
  * @param options 可选参数
  * @param url 指定模板下载路径
  */
-const create = async (options: OptionType) => {
-    const { react_standard, react_ssr, react_admin, force } = options;
+const create = async (options: Partial<OptionType>) => {
+    const { react_standard='demo', react_ssr='demo', react_admin='demo', force } = options;
     if (react_standard) {
         let name = typeof react_standard === "boolean" ? "demo":react_standard;
         await dirProcess(

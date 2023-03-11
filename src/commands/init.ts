@@ -3,19 +3,20 @@ import chalk from "chalk";
 import validate from "validate-npm-package-name"
 // import { isDir } from "../utils";
 import create from "./create";
+import { dirProcess, isExistedDir } from "../utils";
 export type OptionType = {
-  react_standard:boolean|string;
-  react_ssr:boolean|string;
-  react_admin:boolean|string;
-  force:boolean|string;
+  react_standard: boolean | string;
+  react_ssr: boolean | string;
+  react_admin: boolean | string;
+  force: boolean | string;
 }
-const init = async(strategy:string,options:OptionType)=>{
-  console.log("options",options);
-  if(Object.keys(options).length){
+const init = async (strategy: string, options: OptionType) => {
+  // console.log("options",options);
+  if (Object.keys(options).length) {
     create(options);
     return;
   }
- 
+
   let { type, name } = await inquirer.prompt([
     {
       name: "type",
@@ -38,36 +39,36 @@ const init = async(strategy:string,options:OptionType)=>{
       ],
     },
     {
-        type: "input",
-        name: "name",
-        message: "请输入项目名称:",
-        // validate: async function (input){
-        //   // 检查当前目录是否存在相同的目录
-        //   const isExisted = await isDir(input);
-        //   const validateRes = validate(input);
-        //   const isValidName = !Object.values(validateRes).some((d)=>d === false);
-        //   if (isValidName && !isExisted) return true;
-        //   return isExisted
-        //   ? `文件夹："${input}"已经存在 ("${input}" 文件夹已经存在)`
-        //   : chalk.hex('#FFA500')("包名不符合npm规范 (请重新输入项目名称)");
-        // },
+      type: "input",
+      name: "name",
+      message: "请输入项目名称:",
+      validate: async function (input) {
+        // 检查当前目录是否存在相同的目录
+        const isExisted = isExistedDir(input);
+        const validateRes = validate(input);
+        const isValidName = !Object.values(validateRes).some((d) => d === false);
+        if (isValidName && !isExisted) return true;
+        return isExisted
+          ? `文件夹："${input}"已经存在 ("${input}" 文件夹已经存在)`
+          : chalk.hex('#FFA500')("包名不符合npm规范 (请重新输入项目名称)");
+      },
     }
   ]);
 
-  if(!type){
+  if (!type) {
     return;
   }
+  
   switch (type) {
     case 'react_standard':
-        console.log('选择了',type);
-        // create(name,{force:''});
-        break;
+      await create({ react_standard: name })
+      break;
     case "react_ssr":
-      console.log('选择了',type);
+      await create({ react_ssr: name })
       break
     default:
-        console.log('选择了',type);
-        break;
+      await create({ react_admin: name })
+      break;
   }
 }
 export default init;

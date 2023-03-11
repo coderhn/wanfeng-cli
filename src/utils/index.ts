@@ -2,13 +2,19 @@ import path from 'path';
 import inquirer from "inquirer";
 import fs from 'fs-extra';
 import ora from "ora";
-export async function dirProcess(dirName: string, force?: boolean | string) {
-    // 执行创建命令
+
+export function isExistedDir(dirName:string){
+     // 执行创建命令
     // 当前命令行选择的目录
     const cwd = process.cwd();
     // 需要创建的目录地址
     const targetAir = path.join(cwd, dirName);
-    if (fs.existsSync(targetAir)) {
+    return fs.existsSync(targetAir);
+}
+
+export async function dirProcess(dirName: string, force?: boolean | string) {
+    const targetAir = path.join(process.cwd(), dirName);
+    if (isExistedDir(dirName)) {
         if (force) {
             await fs.remove(targetAir);
         } else {
